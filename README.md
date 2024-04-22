@@ -44,7 +44,6 @@ Update the DATABASE_URL environment variable in the .env file with your MySQL co
 ### Run the Application:
 
 ```bash
-Copy code
 npm run dev
 ```
 
@@ -80,4 +79,4 @@ This project is licensed under the MIT License.
 ## Acknowledgements
 
 Special thanks to the vibrant Ethiopian culinary community for their inspiration.
-Built with ❤️ by Your Name.
+Built with 🥗 by Your Solomon Emrie.
