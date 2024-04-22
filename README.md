@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ethiopian Food Recipes Platform
+
+Welcome to the Ethiopian Food Recipes Platform! This platform allows users to discover, share, and explore traditional Ethiopian recipes from different regions of the country. Whether you're a cooking enthusiast, a foodie eager to explore Ethiopian cuisine, or someone looking for culinary inspiration, this platform is for you.
+
+## Features
+
+- **Recipe Sharing**: Share your favorite Ethiopian recipes with the community.
+- **Recipe Discovery**: Explore a diverse collection of traditional Ethiopian recipes.
+- **User Interaction**: Interact with other users through comments, ratings, and favorites.
+- **Ingredient and Category Tags**: Discover recipes based on ingredients and categories.
+
+## Technologies Used
+
+- **Next.js**: Frontend framework for building React applications.
+- **Prisma**: Database toolkit for TypeScript and Node.js.
+- **MySQL**: Relational database management system for storing recipe data.
+- **Tailwind CSS**: Utility-first CSS framework for styling the application.
+- **GitHub**: Version control and collaboration platform for managing the project.
 
 ## Getting Started
 
-First, run the development server:
+To get started with the Ethiopian Food Recipes Platform, follow these steps:
+
+### Clone the Repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+git clone https://github.com/sol-21/ethiopian-food-recipes.git
+cd ethiopian-food-recipes
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install Dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Set Up Database:
 
-## Learn More
+Ensure MySQL is running on your local machine.
+Update the DATABASE_URL environment variable in the .env file with your MySQL connection URL.
 
-To learn more about Next.js, take a look at the following resources:
+### Run the Application:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+Copy code
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Explore the Platform:
 
-## Deploy on Vercel
+Open your browser and navigate to http://localhost:3000 to explore the Ethiopian Food Recipes Platform!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+We welcome contributions from the community! If you'd like to contribute to the project, please follow these steps:
+
+## Fork the repository.
+
+1. Fork the repository.
+2. Create your feature branch:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -am 'Add some feature'
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/your-feature
+   ```
+5. Create a new Pull Request.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgements
+
+Special thanks to the vibrant Ethiopian culinary community for their inspiration.
+Built with ❤️ by Your Name.
