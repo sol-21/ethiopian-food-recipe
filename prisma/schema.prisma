@@ -1,0 +1,124 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// Define the User model
+model User {
+  id         Int      @id @default(autoincrement())
+  username   String   @unique
+  email      String   @unique
+  password   String
+  profilePic String?
+  bio        String?
+  website    String?
+  location   String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  // Define the relationships
+  favorites Recipe[]  @relation("UserFavorites")
+  followers User[]    @relation("UserFollowers")
+  following User[]    @relation("UserFollowers")
+  comments  Comment[] @relation("UserComments")
+  ratings   Rating[]  @relation("UserRatings")
+  roles     Role[]    @relation("UserRole")
+}
+
+// Define the Role model
+model Role {
+  id          Int          @id @default(autoincrement())
+  name        String       @unique
+  permissions Permission[] @relation("RolePermission")
+  users       User[]       @relation("UserRole")
+}
+
+// Define the Permission model
+model Permission {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  roles Role[] @relation("RolePermission")
+}
+
+// Define the Recipe model
+model Recipe {
+  id           Int      @id @default(autoincrement())
+  title        String
+  description  String
+  cookingTime  Int
+  servingSize  Int
+  instructions String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  // Define the relationships
+  ingredients Ingredient[] @relation("RecipeIngredients")
+  categories  Category[]   @relation("RecipeCategories")
+  comments    Comment[]    @relation("RecipeComments")
+  ratings     Rating[]     @relation("RecipeRatings")
+  favoritedBy User[]       @relation("UserFavorites")
+}
+
+// Define the Ingredient model
+model Ingredient {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+  // Add other relevant fields like nutritional information
+
+  // Define the relationships
+  recipes Recipe[] @relation("RecipeIngredients")
+}
+
+// Define the Category model
+model Category {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String?
+  // Add other relevant fields
+
+  // Define the relationships
+  recipes Recipe[] @relation("RecipeCategories")
+}
+
+// Define the Comment model
+model Comment {
+  id        Int      @id @default(autoincrement())
+  text      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Define the relationships
+  user   User   @relation("UserComments", fields: [userId], references: [id])
+  recipe Recipe @relation("RecipeComments", fields: [recipeId], references: [id])
+
+  // Foreign keys
+  userId   Int
+  recipeId Int
+}
+
+// Define the Rating model
+model Rating {
+  id        Int      @id @default(autoincrement())
+  value     Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Define the relationships
+  user   User   @relation("UserRatings", fields: [userId], references: [id])
+  recipe Recipe @relation("RecipeRatings", fields: [recipeId], references: [id])
+
+  // Foreign keys
+  userId   Int
+  recipeId Int
+}
